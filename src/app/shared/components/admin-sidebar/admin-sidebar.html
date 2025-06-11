@@ -1,0 +1,32 @@
+<div class="flex h-screen">
+    <aside
+      class="w-64 bg-gray-800 text-white p-5 space-y-6 transition-all duration-300"
+      [ngClass]="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
+    >
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-bold">Admin Panel</h1>
+        <button class="lg:hidden text-gray-300" (click)="toggleSidebar()">
+          ✖
+        </button>
+      </div>
+  
+      <nav class="mt-6">
+        <a
+          *ngFor="let link of links"
+          [routerLink]="link.path"
+          routerLinkActive="bg-gray-700"
+          class="block px-4 py-2 mb-5 rounded-lg hover:bg-gray-700 transition"
+        >
+          {{ link.label }}
+        </a>
+      </nav>
+    </aside>
+  
+    <button
+      class="lg:hidden fixed top-5 left-5 bg-gray-900 text-white p-2 rounded-md"
+      (click)="toggleSidebar()"
+    >
+      ☰
+    </button>
+  </div>
+  

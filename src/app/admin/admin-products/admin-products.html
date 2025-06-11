@@ -1,0 +1,42 @@
+<div class="container mx-auto p-6">
+  <h1 class="text-2xl font-bold text-gray-800 mb-4">Lista de Productos</h1>
+
+
+  <div class="flex justify-end mb-4">
+    <button (click)="abrirModalAgregar()" class="bg-green-600 text-white px-4 py-2 rounded-lg">Agregar Producto</button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let producto of productos" class="bg-white p-5 rounded-lg shadow-lg relative">
+
+      <button (click)="abrirModal(producto)" 
+        class="absolute top-5 right-2 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm">
+        Editar
+      </button>
+  
+      <span 
+        class="absolute top-14 right-2 px-3 py-1 rounded-full text-xs font-semibold"
+        [ngClass]="producto.estado === 'activo' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'">
+        {{ producto.estado }}
+      </span>
+      
+      <h2 class="text-xl font-semibold">{{ producto.nombre }}</h2>
+      <p class="font-bold mt-2">S/ {{ producto.precio }}</p>
+      <p class="text-sm text-gray-500">Creado el: {{ producto.fecha_creacion | date:'yyyy-MM-dd' }}</p>
+      <a (click)="verDetalles(producto.id_producto)" class="text-blue-500 mt-2 block">Ver detalles</a>
+        
+    </div>
+  </div>
+  
+</div>
+
+<app-modal-product
+  [product]="productoSeleccionado"
+  [isOpen]="modalAbierto"
+  title="Editar Producto"
+  (close)="cerrarModal()"
+  (updated)="recargarProductos()">
+</app-modal-product>
+
+<app-add-modal-product [isOpen]="modalAgregarAbierto" title="Agregar Producto" (close)="cerrarModalAgregar()">
+</app-add-modal-product>

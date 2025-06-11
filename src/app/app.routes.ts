@@ -2,6 +2,9 @@ import { RouterModule,Routes } from '@angular/router';
 import { Layout } from './pages/layout/layout';
 import { Home } from './pages/home/home';
 import { Products } from './pages/products/products';
+import { AdminLayout } from './admin/admin-layout/admin-layout';
+import { AdminProducts } from './admin/admin-products/admin-products';
+import { AdminDetailProduct } from './admin/admin-detail-product/admin-detail-product';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -14,6 +17,20 @@ export const routes: Routes = [
             },
             {   path:'productos',
                 component:Products
+            }
+        ]
+    },
+    {
+        path: 'admin',
+        component: AdminLayout,
+        children: [
+            {
+                path: 'productos',
+                component: AdminProducts
+            },
+            {
+                path: 'productos/:id',
+                component: AdminDetailProduct
             }
         ]
     }

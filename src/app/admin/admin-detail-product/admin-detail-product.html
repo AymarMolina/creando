@@ -1,0 +1,115 @@
+<div class="max-w-4xl mx-auto p-6">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-blue-600">Detalles del Producto</h2>
+    <p class="mt-2"><strong>Nombre:</strong> {{ producto?.nombre }}</p>
+    <p><strong>Descripción:</strong> {{ producto?.descripcion }}</p>
+    <p><strong>Precio:</strong> <span class="text-green-500">S/.{{ producto?.precio }}</span></p>
+  </div>
+
+  <div class="bg-white shadow-lg rounded-lg p-6 mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let foto of fotosProducto; let i = index" class="bg-white p-4">
+        <div class="relative">
+          <img
+            [src]="foto.url_foto"
+            alt="Foto del producto"
+            class="w-full h-48 object-cover rounded-lg border border-gray-400"
+          />
+
+          <button
+            (click)="seleccionarImagen(i)"
+            class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-lg shadow-md hover:bg-blue-700 transition"
+          >
+            Cambiar
+          </button>
+        </div>
+
+        <input
+          type="file"
+          (change)="onFileSelected($event, i)"
+          class="hidden"
+        />
+      </div>
+    </div>
+    
+  </div>
+  
+  
+
+
+
+
+  <!-- 📌 Variantes Disponibles -->
+  <div class="bg-white shadow-lg rounded-lg p-6 mt-6">
+    <h3 class="text-xl font-semibold text-gray-700">Variantes Disponibles</h3>
+
+    <table class="w-full mt-4 border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border p-3 text-left">Color</th>
+          <th class="border p-3 text-left">Talla</th>
+          <th class="border p-3 text-left">Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let variante of variantesProducto" class="border-b">
+          <td class="border p-3">
+            <span class="px-3 py-1 bg-blue-500 text-white rounded-lg">{{ getColorNombre(variante.id_color) }}</span>
+          </td>
+          <td class="border p-3">
+            <span class="px-3 py-1 bg-yellow-500 text-white rounded-lg">{{ getTallaNombre(variante.id_talla) }}</span>
+          </td>
+          <td class="border p-3">
+            <span class="px-3 py-1 bg-green-500 text-white rounded-lg">{{ variante.stock}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ➕ Agregar Nueva Variante -->
+  <div class="bg-white shadow-lg rounded-lg p-6 mt-6">
+    <h3 class="text-xl font-semibold text-green-600">Agregar Nueva Variante</h3>
+
+    <form (ngSubmit)="agregarVariante()" class="mt-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Selector de color -->
+        <div>
+          <label class="block text-gray-600 font-medium">Color:</label>
+          <select [(ngModel)]="nuevaVariante.id_color" name="color" required
+            class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200">
+            <option *ngFor="let color of colores" [value]="color.id_color">
+              {{ color.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Selector de talla -->
+        <div>
+          <label class="block text-gray-600 font-medium">Talla:</label>
+          <select [(ngModel)]="nuevaVariante.id_talla" name="talla" required
+            class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200">
+            <option *ngFor="let talla of tallas" [value]="talla.id_talla">
+              {{ talla.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Stock -->
+        <div>
+          <label class="block text-gray-600 font-medium">Stock:</label>
+          <input type="number" [(ngModel)]="nuevaVariante.cantidad" name="cantidad" required min="1"
+            class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200">
+        </div>
+      </div>
+
+      <!-- Botón Agregar -->
+      <div class="mt-4 text-right">
+        <button type="submit"
+          class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">
+          Agregar Variante
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
