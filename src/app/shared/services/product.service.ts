@@ -53,6 +53,8 @@ export class ProductoService {
   getTalla(): Observable<any>{
     return this.http.get(`${this.apiUrl}/talla`);
   }
+
+  //VARIANTE
   getVariants(): Observable<any> {
     return this.http.get(`${this.apiUrl}/variantes`);
   }

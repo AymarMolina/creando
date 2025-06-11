@@ -22,49 +22,6 @@
 
                 <div class="mt-4 lg:row-span-3 lg:mt-0">
                     <p class="text-2xl tracking-tight text-gray-900">S/.{{ producto?.precio }}</p>
-
-                    <div class="mt-4">
-                        <h3 class="sr-only">Reseñas</h3>
-                        <div class="flex items-center">
-                            <div class="flex items-center">
-                               
-                                <svg class="size-5 shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="size-5 shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="size-5 shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="size-5 shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="size-5 shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <p class="sr-only">4 out of 5 stars</p>
-                            <a href="#" class="ml-3 text-sm font-medium text-[#00A63E] hover:text-[#adeaae]">117
-                                reseñas</a>
-                        </div>
-                    </div>
-
                     <form class="mt-4">
                         <div>
                             <h3 class="text-sm font-medium text-gray-900">Color</h3>
@@ -72,7 +29,7 @@
                                 <div class="flex items-center gap-x-3">
                                 <label *ngFor="let color of colores"
                                     class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-hidden">
-                                    <input type="radio" name="color-choice" [value]="color.nombre" class="sr-only">
+                                    <input type="radio" name="color-choice" [value]="color.nombre" class="sr-only" (change)="colorSeleccionado = color.nombre">
                                     <span aria-hidden="true"
                                     class="size-8 rounded-full border border-black/10"
                                     [ngStyle]="{'background-color': color.codigo_color}">
@@ -90,52 +47,15 @@
 
                             <fieldset aria-label="Choose a size" class="mt-4">
                                 <div class="grid grid-cols-4 gap-2 sm:grid-cols-8 lg:grid-cols-4">
-                                    <label
-                                        class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-2 py-2 text-xs font-medium text-gray-200 uppercase hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="XXS" disabled class="sr-only">
-                                        <span>XXS</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="XS" class="sr-only">
-                                        <span>XS</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="S" class="sr-only">
-                                        <span>S</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="M" class="sr-only">
-                                        <span>M</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="L" class="sr-only">
-                                        <span>L</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="XL" class="sr-only">
-                                        <span>XL</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="2XL" class="sr-only">
-                                        <span>2XL</span>
-                                    </label>
-                                    <label
-                                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                        <input type="radio" name="size-choice" value="3XL" class="sr-only">
-                                        <span>3XL</span>
-                                    </label>
+                                <label *ngFor="let talla of tallas"
+                                    class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
+                                    <input type="radio" name="size-choice" [value]="talla.nombre" class="sr-only" (change)="tallaSeleccionada = talla.nombre">
+                                    <span>{{ talla.nombre }}</span>
+                                </label>
                                 </div>
                             </fieldset>
                         </div>
-
-
-                        <button type="submit"
+                        <button (click)="anadirAlCarrito()" type="submit"
                             class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#adeaae] px-8 py-3 text-base font-medium text-white hover:bg-[#00A63E] focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden">Añadir
                             al carro</button>
                     </form>
