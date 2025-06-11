@@ -10,8 +10,9 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {}
 
+  //PRODUCTOS
   addProduct(productoData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/productos`, productoData); // Enviar como JSON
+    return this.http.post(`${this.apiUrl}/productos`, productoData);
   }
   getProduct(): Observable<any>{
     return this.http.get(`${this.apiUrl}/productos`);
@@ -19,24 +20,36 @@ export class ProductoService {
   getProductoById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/productos/${id}`);
   }
-  getProductoById12312(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/productos/${id}`);
-  }
   updateProduct(id: number, productoData: any): Observable<any> {
-  return this.http.put(`${this.apiUrl}/productos/${id}`, productoData);
+    return this.http.put(`${this.apiUrl}/productos/${id}`, productoData);
   }
 
+  //FOTOS
   getFotos(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}/fotos`);
   }
   actualizarFoto(id_foto: number, formData: FormData): Observable<any> {
-  return this.http.put(`${this.apiUrl}/fotos/${id_foto}`, formData);
-}
+    return this.http.put(`${this.apiUrl}/fotos/${id_foto}`, formData);
+  }
 
-
-  getColor(): Observable<any>{
+  //COLOR
+  addColor(colorData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/color`, colorData);
+  }
+  getColor(): Observable<any> {
     return this.http.get(`${this.apiUrl}/color`);
   }
+  getColorById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/color/${id}`);
+  }
+  updateColor(id: number, colorData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/color/${id}`, colorData);
+  }
+  deleteColor(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/color/${id}`);
+  }
+
+  //TALLA
   getTalla(): Observable<any>{
     return this.http.get(`${this.apiUrl}/talla`);
   }

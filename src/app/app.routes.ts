@@ -5,6 +5,8 @@ import { Products } from './pages/products/products';
 import { AdminLayout } from './admin/admin-layout/admin-layout';
 import { AdminProducts } from './admin/admin-products/admin-products';
 import { AdminDetailProduct } from './admin/admin-detail-product/admin-detail-product';
+import { ProductId } from './pages/product-id/product-id';
+import { AdminColor } from './admin/admin-color/admin-color';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -17,6 +19,10 @@ export const routes: Routes = [
             },
             {   path:'productos',
                 component:Products
+            },
+            {
+                path:'productos/:id',
+                component:ProductId
             }
         ]
     },
@@ -31,6 +37,10 @@ export const routes: Routes = [
             {
                 path: 'productos/:id',
                 component: AdminDetailProduct
+            },
+            {
+                path:'colores',
+                component:AdminColor
             }
         ]
     }

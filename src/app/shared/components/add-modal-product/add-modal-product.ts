@@ -62,7 +62,6 @@ export class AddModalProduct {
       next: (res) => {
         console.log('Producto creado:', res);
         this.closeModal();
-        // Recargar lista o lo que necesites
       },
       error: (err) => {
         console.error('Error:', err);

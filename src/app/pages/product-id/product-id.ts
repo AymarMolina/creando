@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-id.css'
 })
 export class ProductId {
-producto: any;
+  producto: any;
   variantesProducto: any[] = [];
   colores: any[] = [];
   tallas: any[] = [];

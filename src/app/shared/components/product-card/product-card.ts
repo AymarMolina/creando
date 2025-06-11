@@ -16,6 +16,7 @@ export class ProductCard {
   constructor(private router: Router){}
 
   verDetalles(id: number) {
+    console.log("bruh")
     this.router.navigate(['/productos', id]);
   }
 }

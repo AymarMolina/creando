@@ -13,7 +13,7 @@ import { AddModalProduct } from '../../shared/components/add-modal-product/add-m
   styleUrl: './admin-products.css'
 })
 export class AdminProducts {
-productos: any[] = [];
+  productos: any[] = [];
 
   constructor(private productoService: ProductoService, private router: Router) { }
 
