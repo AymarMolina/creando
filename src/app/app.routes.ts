@@ -1,6 +1,7 @@
 import { RouterModule,Routes } from '@angular/router';
 import { Layout } from './pages/layout/layout';
 import { Home } from './pages/home/home';
+import { Products } from './pages/products/products';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -10,6 +11,9 @@ export const routes: Routes = [
         children:[
             {   path:'inicio',
                 component:Home
+            },
+            {   path:'productos',
+                component:Products
             }
         ]
     }
