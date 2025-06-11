@@ -1,0 +1,63 @@
+<nav class="bg-[#00A63E]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <div class="flex items-center">
+          <a href="/inicio" class="shrink-0">
+            <img class="size-8" src="/assets/dino.svg" alt="Your Company">
+          </a>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a href="/productos" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-[#adeaae] hover:text-black">Productos</a>
+              <a href="/compra" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-[#adeaae] hover:text-black">Mi carrito</a>
+              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-[#adeaae] hover:text-black">Calendar</a>
+              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-[#adeaae] hover:text-black">Reports</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <button (click)="abrirCarrito()" type="button" class="relative flex items-center justify-center w-10 h-10 rounded-full text-gray-400 hover:text-white">
+              <img class="size-7" src="/assets/carro.png" alt="Carrito de compras">
+            </button>
+            
+            <div class="relative ml-3">
+              <button (click)="toggleDropdown()" type="button" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <span class="sr-only">Open user menu</span>
+                <img class="size-8 rounded-full" src="/assets/shark.jpg" alt="">
+              </button>
+  
+              <div *ngIf="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700">Your Profile</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700">Settings</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700">Sign out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="-mr-2 flex md:hidden">
+          <button (click)="toggleMobileMenu()" type="button" class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white">
+            <span class="sr-only">Open main menu</span>
+            <svg *ngIf="!isMobileMenuOpen" class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg *ngIf="isMobileMenuOpen" class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="isMobileMenuOpen" class="md:hidden">
+      <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+        <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Dashboard</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
+      </div>
+    </div>
+  </nav>
+  
