@@ -23,41 +23,52 @@
                 <div class="mt-4 lg:row-span-3 lg:mt-0">
                     <p class="text-2xl tracking-tight text-gray-900">S/.{{ producto?.precio }}</p>
                     <form class="mt-4">
+                        <!-- Si tiene variantes -->
+                        <div *ngIf="tieneVariantes; else sinVariantes">
+                        <!-- COLOR -->
                         <div>
                             <h3 class="text-sm font-medium text-gray-900">Color</h3>
                             <fieldset aria-label="Choose a color" class="mt-4">
-                                <div class="flex items-center gap-x-3">
+                            <div class="flex items-center gap-x-3">
                                 <label *ngFor="let color of colores"
-                                    class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-hidden">
-                                    <input type="radio" name="color-choice" [value]="color.nombre" class="sr-only" (change)="colorSeleccionado = color.nombre">
-                                    <span aria-hidden="true"
+                                class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-hidden">
+                                <input type="radio" name="color-choice" [value]="color.nombre" class="sr-only" (change)="colorSeleccionado = color.nombre">
+                                <span aria-hidden="true"
                                     class="size-8 rounded-full border border-black/10"
                                     [ngStyle]="{'background-color': color.codigo_color}">
-                                    </span>
+                                </span>
                                 </label>
-                                </div>
+                            </div>
                             </fieldset>
                         </div>
 
-                        
+                        <!-- TALLA -->
                         <div class="mt-4">
                             <div class="flex items-center justify-between">
-                                <h3 class="text-sm font-medium text-gray-900">Talla</h3>
+                            <h3 class="text-sm font-medium text-gray-900">Talla</h3>
                             </div>
-
                             <fieldset aria-label="Choose a size" class="mt-4">
-                                <div class="grid grid-cols-4 gap-2 sm:grid-cols-8 lg:grid-cols-4">
+                            <div class="grid grid-cols-4 gap-2 sm:grid-cols-8 lg:grid-cols-4">
                                 <label *ngFor="let talla of tallas"
-                                    class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
-                                    <input type="radio" name="size-choice" [value]="talla.nombre" class="sr-only" (change)="tallaSeleccionada = talla.nombre">
-                                    <span>{{ talla.nombre }}</span>
+                                class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-2 py-2 text-xs font-medium text-gray-900 uppercase shadow-xs hover:bg-gray-50 focus:outline-hidden sm:flex-1">
+                                <input type="radio" name="size-choice" [value]="talla.nombre" class="sr-only" (change)="tallaSeleccionada = talla.nombre">
+                                <span>{{ talla.nombre }}</span>
                                 </label>
-                                </div>
+                            </div>
                             </fieldset>
                         </div>
-                        <button (click)="anadirAlCarrito()" type="submit"
-                            class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#adeaae] px-8 py-3 text-base font-medium text-white hover:bg-[#00A63E] focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden">Añadir
-                            al carro</button>
+                        </div>
+                        <button
+                            (click)="anadirAlCarrito()"
+                            [disabled]="!tieneVariantes"
+                            type="submit"
+                            class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white
+                                transition-colors
+                                bg-[#adeaae] hover:bg-[#00A63E]
+                                disabled:bg-gray-300 disabled:cursor-not-allowed">
+                            Añadir al carro
+                        </button>
+
                     </form>
                 </div>
 
@@ -75,3 +86,9 @@
         </div>
     </div>
 </div>
+<!-- Si NO tiene variantes -->
+<ng-template #sinVariantes>
+  <div class="mt-6 text-center text-lg font-semibold text-red-500">
+    ¡MUY PRONTOOOO!
+  </div>
+</ng-template>

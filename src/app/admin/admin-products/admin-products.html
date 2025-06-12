@@ -9,21 +9,33 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div *ngFor="let producto of productos" class="bg-white p-5 rounded-lg shadow-lg relative">
 
-      <button (click)="abrirModal(producto)" 
-        class="absolute top-5 right-2 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm">
+      <button 
+        (click)="abrirModal(producto)" 
+        class="absolute top-5 right-2 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm cursor-pointer hover:bg-blue-700 transition"
+      >
         Editar
       </button>
+
   
       <span 
-        class="absolute top-14 right-2 px-3 py-1 rounded-full text-xs font-semibold"
-        [ngClass]="producto.estado === 'activo' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'">
-        {{ producto.estado }}
+        class="absolute top-14 right-2 px-3 py-1 rounded-full text-xs font-semibold shadow-md border cursor-default"
+        [ngClass]="producto.estado === 'activo' 
+          ? 'bg-green-100 text-green-800 border-green-300' 
+          : 'bg-red-100 text-red-800 border-red-300'">
+        {{ producto.estado | titlecase }}
       </span>
+
       
       <h2 class="text-xl font-semibold">{{ producto.nombre }}</h2>
       <p class="font-bold mt-2">S/ {{ producto.precio }}</p>
       <p class="text-sm text-gray-500">Creado el: {{ producto.fecha_creacion | date:'yyyy-MM-dd' }}</p>
-      <a (click)="verDetalles(producto.id_producto)" class="text-blue-500 mt-2 block">Ver detalles</a>
+      <a 
+        (click)="verDetalles(producto.id_producto)" 
+        class="text-blue-500 mt-2 block cursor-pointer hover:underline"
+      >
+        Ver detalles
+      </a>
+
         
     </div>
   </div>

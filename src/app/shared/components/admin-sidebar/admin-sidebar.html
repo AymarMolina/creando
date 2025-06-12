@@ -1,32 +1,28 @@
-<div class="flex h-screen">
-    <aside
-      class="w-64 bg-gray-800 text-white p-5 space-y-6 transition-all duration-300"
-      [ngClass]="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
-    >
-      <div class="flex items-center justify-between">
-        <h1 class="text-xl font-bold">Admin Panel</h1>
-        <button class="lg:hidden text-gray-300" (click)="toggleSidebar()">
-          ✖
-        </button>
-      </div>
-  
-      <nav class="mt-6">
-        <a
-          *ngFor="let link of links"
-          [routerLink]="link.path"
-          routerLinkActive="bg-gray-700"
-          class="block px-4 py-2 mb-5 rounded-lg hover:bg-gray-700 transition"
-        >
-          {{ link.label }}
-        </a>
-      </nav>
-    </aside>
-  
-    <button
-      class="lg:hidden fixed top-5 left-5 bg-gray-900 text-white p-2 rounded-md"
-      (click)="toggleSidebar()"
-    >
-      ☰
-    </button>
+<aside
+  class="bg-gray-900 text-white w-64 p-6 flex-shrink-0 h-screen fixed lg:static top-0 left-0 z-40 transition-transform duration-300"
+  [ngClass]="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
+>
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-2xl font-bold text-green-400">Administrador</h1>
+    <button class="lg:hidden text-gray-400 hover:text-white" (click)="toggleSidebar()">✖</button>
   </div>
-  
+
+  <nav>
+    <a
+      *ngFor="let link of links"
+      [routerLink]="link.path"
+      routerLinkActive="bg-green-600 text-white"
+      class="block px-4 py-3 mb-3 rounded-md hover:bg-green-700 transition"
+    >
+      {{ link.label }}
+    </a>
+  </nav>
+</aside>
+
+<!-- Botón de menú para móviles -->
+<button
+  class="lg:hidden fixed top-4 left-4 bg-gray-800 text-white p-2 rounded-md shadow-lg z-30"
+  (click)="toggleSidebar()"
+>
+  ☰
+</button>

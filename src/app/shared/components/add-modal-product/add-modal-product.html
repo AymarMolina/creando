@@ -14,8 +14,17 @@
           
           <div>
             <label class="block text-sm font-medium text-gray-700">Descripción</label>
-            <textarea [(ngModel)]="producto.descripcion" name="descripcion" placeholder='Ingrese la descripción' class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" required></textarea>
+            <textarea
+              [(ngModel)]="producto.descripcion"
+              name="descripcion"
+              placeholder="Ingrese la descripción"
+              (input)="autoGrow($event)"
+              class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 resize-none overflow-hidden"
+              rows="1"
+              required>
+            </textarea>
           </div>
+
           
           <div>
             <label class="block text-sm font-medium text-gray-700">Precio</label>

@@ -27,6 +27,8 @@ export class ProductId {
   colores: any[] = [];
   tallas: any[] = [];
   fotosProducto: any[] = [];
+  tieneVariantes: boolean = false;
+
   constructor(private route: ActivatedRoute, private dataService: ProductoService,private cartService: CartService) {}
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -48,7 +50,12 @@ export class ProductId {
       this.dataService.getTalla().subscribe((tallasData) => {
         this.tallas = tallasData.filter((t: any) => tallaIds.includes(t.id_talla));
       });
+      this.producto = data;
+      this.variantesProducto = data.variantes;
+      this.tieneVariantes = this.variantesProducto.length > 0;
     });
+    
+
   }
   anadirAlCarrito() {
       if (!this.colorSeleccionado || !this.tallaSeleccionada) {

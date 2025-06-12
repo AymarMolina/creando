@@ -1,9 +1,11 @@
-<div (click)="verDetalles(id)">
-    <img [src]="img" class="w-full rounded-md" [alt]="nombre">
+<div class="bg-white rounded-lg shadow-md p-4 h-full flex flex-col justify-between" (click)="verDetalles(id)">
+  <div>
+    <img [src]="img" class="w-full h-48 object-cover rounded-md" [alt]="nombre">
     <h3 class="mt-4 text-lg font-semibold">{{ nombre }}</h3>
     <p class="text-gray-600">S/. {{ precio }}</p>
-    <button class="mt-4 bg-[#00A63E] text-white px-4 py-2 rounded-md w-full">
-    Añadir al carrito
-    </button>
+  </div>
 
+  <button class="mt-4 bg-[#00A63E] text-white px-4 py-2 rounded-md w-full">
+    Añadir al carrito
+  </button>
 </div>

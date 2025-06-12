@@ -31,10 +31,7 @@ export class AdminProducts {
     this.productoService.getProduct().subscribe(
       (productos) => this.productos = productos
     );
-    console.log("dd")
   }
-
-  
 
   verDetalles(id: number) {
 

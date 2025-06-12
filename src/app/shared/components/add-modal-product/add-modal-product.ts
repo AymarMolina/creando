@@ -32,12 +32,22 @@ export class AddModalProduct {
   constructor(private productoService: ProductoService) {}
 
   ngOnInit(): void {
-    this.categorias = this.productoService.getCategorias();
+    this.productoService.getCategorias1().subscribe(data => {
+        this.categorias = data;
+      });
   }
-
+  cargarCategorias(): void {
+      
+  }
   closeModal() {
     this.close.emit();
   }
+  autoGrow(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto'; // Reinicia la altura
+    textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta a nuevo contenido
+  }
+
 
   submitForm() {
     if (!this.isFormValid()) return;

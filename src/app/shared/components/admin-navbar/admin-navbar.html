@@ -1,17 +1,15 @@
-<nav class="bg-[#00A63E] p-4 flex justify-end items-center">
-    <div class="relative flex items-center space-x-2">
+<nav class="bg-[#00A63E] px-6 py-4 shadow-md flex justify-end items-center relative z-10">
+  <div class="relative flex items-center space-x-4">
+    <span class="text-white font-semibold text-lg">Aymar Molina</span>
 
-      <span class="text-white font-medium">Aymar Molina</span>
-  
-      <button (click)="toggleDropdown()" class="flex items-center">
-        <img class="size-8 rounded-full" src="assets/shark.jpg" alt="User">
-      </button>
-  
-      <div *ngIf="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Perfil</a>
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700">Configuración</a>
-        <a href="#" (click)="logout()" class="block px-4 py-2 text-sm text-gray-700">Cerrar sesión</a>
-      </div>
+    <button (click)="toggleDropdown()" class="focus:outline-none">
+      <img class="w-9 h-9 rounded-full border-2 border-white shadow-md hover:scale-105 transition" src="assets/shark.jpg" alt="User" />
+    </button>
+
+    <div *ngIf="isDropdownOpen" class="absolute right-0 top-14 mt-1 w-52 bg-white rounded-lg shadow-lg border border-gray-100 z-20">
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configuración</a>
+      <a href="#" (click)="logout()" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Cerrar sesión</a>
     </div>
-  </nav>
-  
+  </div>
+</nav>

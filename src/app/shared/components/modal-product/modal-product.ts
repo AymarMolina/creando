@@ -22,6 +22,12 @@ export class ModalProduct {
     this.close.emit();
     console.log(this.product)
   }
+  autoGrow(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto'; // Reinicia para calcular correctamente
+    textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta a contenido
+  }
+
   submitForm() {
     if (!this.product.id_producto) {
       console.error('El producto no tiene ID para actualizar');

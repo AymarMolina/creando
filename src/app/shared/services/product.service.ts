@@ -66,10 +66,19 @@ export class ProductoService {
     const body = { productId: idProducto, colorId: idColor, sizeId: idTalla, stock: cantidad };
     return this.http.post(`${this.apiUrl}/productos/${idProducto}/variantes`, body);
   }
-  categorias = [
-    { id_categoria: 1, nombre: "Camiseta" },
-    { id_categoria: 2, nombre: "Pantalones" },
-  ];
+
+  // CATEGORÍA
+  getCategorias1(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/categorias`);
+  }
+  addCategory(categoryData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/categorias`, categoryData);
+  }
+
+  deleteCategoria(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/categorias/${id}`);
+  }
+
 
   colores = [
     { id_color: 1, nombre: "Rojo" },
@@ -131,12 +140,6 @@ export class ProductoService {
         url_foto:"https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
     }
   ]
-
-
-
-  getCategorias() {
-    return this.categorias;
-  }
 
   getColores() {
     return this.colores;

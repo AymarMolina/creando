@@ -20,11 +20,11 @@ export class Products {
   ngOnInit(): void {
     this.productoService.getProduct().subscribe(
       (response) => {
-          this.productos = response;
-          console.log(response,"wqe")
+        this.productos = response.filter((producto: any) => producto.estado === 'activo');
+        console.log(this.productos);
       },
       (error) => {
-          console.error('Error al obtener productos:', error);
+        console.error('Error al obtener productos:', error);
       }
     );
   }
