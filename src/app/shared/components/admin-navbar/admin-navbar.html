@@ -6,10 +6,17 @@
       <img class="w-9 h-9 rounded-full border-2 border-white shadow-md hover:scale-105 transition" src="assets/shark.jpg" alt="User" />
     </button>
 
-    <div *ngIf="isDropdownOpen" class="absolute right-0 top-14 mt-1 w-52 bg-white rounded-lg shadow-lg border border-gray-100 z-20">
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configuración</a>
-      <a href="#" (click)="logout()" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Cerrar sesión</a>
-    </div>
+    <div
+                *ngIf="isDropdownOpen"
+                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5"
+              >
+                <a
+                  href="#"
+                  (click)="logout(); $event.preventDefault()"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Cerrar sesión
+                </a>
+              </div>
   </div>
 </nav>

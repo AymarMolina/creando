@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -9,13 +10,12 @@ import { Component } from '@angular/core';
 })
 export class AdminNavbar {
   isDropdownOpen = false;
-
+  constructor( private auth: AuthService) {}
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   logout() {
-    console.log("Cerrando sesión...");
-    // Aquí iría la lógica para cerrar sesión
+    this.auth.cerrarSesion();
   }
 }
