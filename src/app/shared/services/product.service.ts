@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:5000/api'; // Ajusta la URL según tu backend
+  private apiUrl = 'https://apicreandoideas-zlxe.onrender.com/api'; // Ajusta la URL según tu backend
 
   constructor(private http: HttpClient) {}
 

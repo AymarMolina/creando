@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private api = 'http://localhost:5000/api/auth';
+  private api = 'https://apicreandoideas-zlxe.onrender.com/api/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
 
