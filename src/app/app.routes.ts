@@ -8,46 +8,33 @@ import { AdminDetailProduct } from './admin/admin-detail-product/admin-detail-pr
 import { ProductId } from './pages/product-id/product-id';
 import { AdminColor } from './admin/admin-color/admin-color';
 import { AdminCategories } from './admin/admin-categories/admin-categories';
+import { Register } from './auth/register/register';
+import { Login } from './auth/login/login';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'inicio', pathMatch: 'full' },
-    {
-        path: '',
-        component: Layout,
-        children:[
-            {   path:'inicio',
-                component:Home
-            },
-            {   path:'productos',
-                component:Products
-            },
-            {
-                path:'productos/:id',
-                component:ProductId
-            }
-        ]
-    },
-    {
-        path: 'admin',
-        component: AdminLayout,
-        children: [
-            {
-                path: 'productos',
-                component: AdminProducts
-            },
-            {
-                path: 'productos/:id',
-                component: AdminDetailProduct
-            },
-            {
-                path:'colores',
-                component:AdminColor
-            },
-            {
-                path:'categorias',
-                component:AdminCategories
-            }
-        ]
-    }
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: '',
+    component: Layout,
+    children: [
+      { path: 'inicio', component: Home },
+      { path: 'productos', component: Products },
+      { path: 'productos/:id', component: ProductId },
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminLayout,
+    canActivate: [AuthGuard], // ⚠️ Protección por rol
+    children: [
+      { path: 'productos', component: AdminProducts },
+      { path: 'productos/:id', component: AdminDetailProduct },
+      { path: 'colores', component: AdminColor },
+      { path: 'categorias', component: AdminCategories },
+    ]
+  },
+  { path: 'login', component: Login},
+  { path: 'register', component: Register },
 ];
 export const AppRoutes = RouterModule.forRoot(routes)

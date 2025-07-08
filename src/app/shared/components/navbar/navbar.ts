@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ import { CartService } from '../../services/cart.service';
 export class Navbar {
   isMobileMenuOpen = false;
   isDropdownOpen = false;
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private auth: AuthService) {}
 
   abrirCarrito() {
     this.cartService.mostrarCarrito();
@@ -22,5 +23,8 @@ export class Navbar {
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  logout() {
+    this.auth.cerrarSesion();
   }
 }

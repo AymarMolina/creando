@@ -14,9 +14,7 @@ export class AdminSidebar {
   links = [
     { path: '/admin/productos', label: 'Productos' },
     { path: '/admin/colores', label: 'Colores' },
-    { path: '/admin/categorias', label: 'Categorías' },
-    { path: '/admin/usuarios', label: 'Usuarios' },
-    { path: '/admin/pedidos', label: 'Pedidos' },
+    { path: '/admin/categorias', label: 'Categorías' }
   ];
 
   toggleSidebar() {
